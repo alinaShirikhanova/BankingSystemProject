@@ -14,6 +14,7 @@ class SignUpWindow(Toplevel):
         self.login = StringVar()
         self.password = StringVar()
 
+
         Label(self, text='Введите свои данные').grid(row=0, sticky=N, pady=10)  # row - строка
         Label(self, text='Name').grid(row=1, sticky=W)
         Label(self, text='Login').grid(row=2, sticky=W)
@@ -24,11 +25,12 @@ class SignUpWindow(Toplevel):
         # Entries
         Entry(self, textvariable=self.name).grid(row=1, column=1)
         Entry(self, textvariable=self.login).grid(row=2, column=1)
-        Entry(self, textvariable=self.password).grid(row=3, column=1)
+        Entry(self, textvariable=self.password, show='*').grid(row=3, column=1)
 
         # Buttons
         Button(self, text='Sign In', font=('Calibri', 12), width=15,
-               command=self.create_account).grid(row=4, sticky=N)
+               command=self.create_account).grid(row=5, sticky=N)
+
 
     def create_account(self):
         name = self.name.get()

@@ -32,25 +32,28 @@ class BankAccount:
 main = Tk()  # Tk() - конструктор, инициализирующий окно
 main.title('Банковская система')  # устанавливаем заголовок окна
 main.geometry('300x300')  # устанавливаем размер окна
-def login_session():
-   all_accounts = os.listdir()
-   login_name = log_login.get()
-   login_pass = log_pass.get()
 
-   for name in all_accounts:
-       if name == login_name:
-           with open(name, 'r') as f:
-               f = f.read().split('\n')
-               password = f[1]
-           if login_pass == password:
-               login_screen.destroy()
-               account_window = Toplevel(main)
-               account_window.title('DashBoard')
-               return
-           else:
-               login_notif.config(fg='red', text="Password is incorrect")
-               return
-   login_notif.config(fg='red', text="Такого аккаунта не существует")
+
+def login_session():
+    all_accounts = os.listdir()
+    login_name = log_login.get()
+    login_pass = log_pass.get()
+
+    for name in all_accounts:
+        if name == login_name:
+            with open(name, 'r') as f:
+                f = f.read().split('\n')
+                password = f[1]
+            if login_pass == password:
+                login_screen.destroy()
+                account_window = Toplevel(main)
+                account_window.title('DashBoard')
+                return
+            else:
+                login_notif.config(fg='red', text="Password is incorrect")
+                return
+    login_notif.config(fg='red', text="Такого аккаунта не существует")
+
 
 def login():
     # Variables
@@ -80,6 +83,8 @@ def login():
     # Buttons
     Button(login_screen, text='Log in', font=('Calibri', 12), width=15, command=login_session).grid(row=3, pady=10,
                                                                                                     sticky=W)
+
+
 def create_account():
     login = s_up_login.get()
     password = s_up_pass.get()
@@ -128,6 +133,3 @@ Button(main, text='Sign Up', font=('Calibri', 12), width=15, command=sign_up).pa
 Button(main, text='Log In', font=('Calibri', 12), width=15, command=login).pack(side=TOP)
 
 main.mainloop()
-
-
-
