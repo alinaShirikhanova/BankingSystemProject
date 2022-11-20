@@ -28,7 +28,7 @@ class SignUpWindow(Toplevel):
 
         # Buttons
         Button(self, text='Sign In', font=('Calibri', 12), width=15,
-               command=self.create_account).grid(row=3, sticky=N)
+               command=self.create_account).grid(row=4, sticky=N)
 
     def create_account(self):
         name = self.name.get()
